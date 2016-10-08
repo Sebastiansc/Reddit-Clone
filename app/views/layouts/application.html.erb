@@ -7,6 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if current_user  %>
+<%= link_to "Create a sub!", new_sub_url %>
+<br>
+<%= link_to "All subs", subs_url %>
+<p><%= current_user.username %></p>
+<%= button_to "Logout" , session_url, method: :delete %>
+<% else %>
+<%= link_to "Sign in", new_session_url%>
+<% end  %>
 
 <%= yield %>
 

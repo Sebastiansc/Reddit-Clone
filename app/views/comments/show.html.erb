@@ -1,0 +1,7 @@
+<h1>  <%= slice_comment(@comment.content) %> </h1>
+
+<p>
+  <strong>Reply to this comment:</strong>
+</p>
+
+<%= render "form", comment: @comment  %>

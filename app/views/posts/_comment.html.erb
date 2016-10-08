@@ -1,0 +1,8 @@
+<a href="<%=new_comment_comment_url(comment)%>"><%=slice_comment(comment.content)%></a>
+<ul>
+  <% all_comments.each do |comment2| %>
+    <% if comment2.parent_id == comment.id %>
+      <li><a href="<%=new_comment_comment_url(comment2)%>"><%=slice_comment(comment2.content)%></a></li>
+    <% end %>
+  <% end %>
+</ul>

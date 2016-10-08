@@ -1,0 +1,33 @@
+<h1><%=message%></h1>
+
+
+<form action="<%=action%>" method="post">
+<%= auth_token %>
+<input type="hidden" name="_method" value="<%=method%>">
+
+<label for="title">Title:</label>
+<input id="title" type="text" name="post[title]" value="<%=@post.title%>">
+<br>
+
+<label for="url">URL:</label>
+<input id="url" type="text" name="post[url]" value="<%=@post.url%>">
+<br>
+
+<label for="textarea">Content:</label>
+<br>
+<textarea id="textarea" name="post[content]" rows="8" cols="40"> <%= @post.content %> </textarea>
+<br>
+<input type="hidden" name="sub[title][]" value="">
+<% @subs.each do |sub| %>
+  <input id="<%=sub.title%>"
+  type="checkbox"
+   name="post[sub_ids][]"
+   value="<%=sub.id%>"
+   <%="checked" if post.sub_ids.include?(sub.id)%>>
+   <label for="<%sub.title%>"><%=sub.title%></label>
+   <br>
+<% end %>
+<br>
+<button>Submit</button>
+
+</form>
